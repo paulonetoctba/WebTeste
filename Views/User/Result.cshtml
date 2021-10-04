@@ -1,0 +1,63 @@
+﻿@model IEnumerable<WebTeste.Models.User>
+
+@{
+    ViewData["Title"] = "Result";
+}
+
+<h1>Resultado de Busca</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UsuarioId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataNascimento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Senha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SexoDesc.Descricao)
+            </th>
+            <th>
+                Ações
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UsuarioId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataNascimento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Senha)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SexoDesc.Descricao)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.UsuarioId }) | 
+                    @Html.ActionLink("Delete", "Delete", new { id = item.UsuarioId })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

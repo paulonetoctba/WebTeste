@@ -1,0 +1,83 @@
+﻿@model IEnumerable<WebTeste.Models.User>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Lista de Usuários</h1>
+
+<div class="row">
+    <div class="col-md-9">
+        <p>
+            <a asp-action="Create"><button class="btn btn-success btn-xs">Cadastrar novo usuário</button></a>
+        </p>
+        <table class="table tab-pane table-responsive">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UsuarioId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nome)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DataNascimento)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Senha)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SexoDesc.Descricao)
+                    </th>
+                    <th>
+                        Ações
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UsuarioId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DataNascimento)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Senha)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SexoDesc.Descricao)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.UsuarioId }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.UsuarioId })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-3">
+        <div class="container">
+            <div class="jumbotron">
+                <h2>Filtrar Usuários</h2>
+                <a asp-action="Buscar"><button class="btn btn-warning btn-xs">Buscar Usuário</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

@@ -1,0 +1,59 @@
+﻿@model WebTeste.Models.User
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Editar usuário</h1>
+
+<hr />
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.HiddenFor(m => m.UsuarioId)
+        <div class="form-group">
+            @Html.LabelFor(m => m.Nome, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Nome, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Nome, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.DataNascimento, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.DataNascimento, new { @class = "form-control", @type = "date" })
+                @Html.ValidationMessageFor(m => m.DataNascimento, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Senha, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Senha, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Senha, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Salvar alterações" class="btn btn-success" />
+                @Html.ActionLink("Cancelar", "Index", null, new { @class = "btn btn-danger" }) |
+                @Html.ActionLink("Deletar Usuário", "Delete", null, new { id = Model.UsuarioId })
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
